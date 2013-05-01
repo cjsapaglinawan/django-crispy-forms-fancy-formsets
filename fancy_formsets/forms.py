@@ -3,7 +3,6 @@ from fancy_formsets.helper import InlineFormHelper, InlineFormsetHelper
 from django.template.loader import get_template
 from django.template.context import Context
 from django.utils.html import escape
-from django.forms.formsets import DELETION_FIELD_NAME
 
 
 class FancyBaseInlineFormSet(BaseInlineFormSet):
@@ -21,8 +20,6 @@ class FancyBaseInlineFormSet(BaseInlineFormSet):
         for form in self.forms:
             if form in self.extra_forms:
                 form.is_extra = True
-                if self.can_delete:
-                    form.fields[DELETION_FIELD_NAME].initial = True
             else:
                 form.is_extra = False
 

@@ -1,5 +1,6 @@
 {% load i18n %}
 
+{% comment %}
 {% if not formset.readonly %}
 <tr>
   <td colspan="{{formset.empty_form.visible_fields|length}}">
@@ -12,3 +13,4 @@
   </td>
 </tr>
 {% endif %}
+{% endcomment %}

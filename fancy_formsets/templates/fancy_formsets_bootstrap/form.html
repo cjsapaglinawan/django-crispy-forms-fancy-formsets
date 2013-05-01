@@ -2,7 +2,7 @@
   {% include "bootstrap/errors.html" %}
 {% endif %}
 
-<tr{% if form.is_extra %} class="hidden extra"{% endif %}>
+<tr{% if form.is_extra %} class="extra"{% endif %}>
   {% for field in form %}
     {% if formset.readonly %}
       {% include "fancy_formsets_bootstrap/field_readonly.html" %}

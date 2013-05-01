@@ -2,7 +2,7 @@
 {% load crispy_forms_field %}
 {% load i18n %}
 
-<h2>{{formset.verbose_name_plural}}</h2>
+<h2>{{formset.verbose_name_plural|title}}</h2>
 
 {% if not formset.queryset.exists %}
     <div class="alert block-message alert-info">

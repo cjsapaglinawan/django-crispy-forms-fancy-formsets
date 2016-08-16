@@ -16,7 +16,12 @@ class FancyBaseInlineFormSet(BaseInlineFormSet):
         self.verbose_name_plural = self.model._meta.verbose_name_plural
         self.model_name = str(self.model._meta).split(".")[-1]
         super(FancyBaseInlineFormSet, self).__init__(*args, **kwargs)
-        self.empty_form = self._construct_form(9999999999999)
+        # Support get_form_kwargs in Django 1.9.
+        if hasattr(self, 'get_form_kwargs') and callable(self.get_form_kwargs):
+            form_kwargs = self.get_form_kwargs(None)
+            self.empty_form = self._construct_form(9999999999999, **form_kwargs)
+        else:
+            self.empty_form = self._construct_form(9999999999999)
         for form in self.forms:
             if form in self.extra_forms:
                 form.is_extra = True

@@ -26,7 +26,7 @@ class FancyFormsetsNode(BasicNode):
             helper = actual_form.helper
         template = get_template(helper.template_name)
         c = self.get_render(context)
-        return template.render(c)
+        return template.render(c.flatten())
 
 
 # {% fancy_formsets %} tag
